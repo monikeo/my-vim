@@ -31,6 +31,62 @@ augroup cursor_off
     autocmd WinEnter * set cursorline cursorcolumn
 augroup END
 
+" python new file with template
+augroup NewPythonFile
+    autocmd!
+    autocmd BufNewFile *.py 0read ~/.vim/templates/python.template
+augroup END
+
+" html new file with template
+augroup NewHTMLFile
+    autocmd!
+    autocmd BufNewFile *.html 0read ~/.vim/templates/html.template
+augroup END
+
+" .c new file with template
+augroup NewCFile
+    autocmd!
+    autocmd BufNewFile *.c 0read ~/.vim/templates/c.template
+augroup END
+
+" .cpp new file with template
+augroup NewCPPFile
+    autocmd!
+    autocmd BufNewFile *.cpp 0read ~/.vim/templates/cpp.template
+augroup END
+
+" .go new file with template
+augroup NewGoFile
+    autocmd!
+    autocmd BufNewFile *.go 0read ~/.vim/templates/go.template
+augroup END
+
+
+" .rs new file with template
+" but check first, using template only without cargo project
+function! s:LoadRustTemplate()
+    let l:cargo_dir = systemlist('git rev-parse --show-toplevel 2>/dev/null')[0]
+    if v:shell_error
+        " Not inside a Git repository, check for Cargo.toml
+        let l:cargo_dir = finddir('Cargo.toml', '.;')
+    endif
+
+    if empty(l:cargo_dir)
+        " Not inside a Cargo project, load the template
+        0read ~/.vim/templates/rust.template
+    endif
+endfunction
+
+" .rs new file with template
+" call function LoadRustTemplate()
+augroup NewRustFile
+    autocmd!
+    autocmd BufNewFile *.rs call s:LoadRustTemplate()
+augroup END
+
+
+
+
 
 " If GUI version of Vim is running set these options.
 if has('gui_running')
