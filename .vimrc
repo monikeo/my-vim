@@ -71,72 +71,6 @@ set wildmode=list:longest
 " Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-"-- AUTOCLOSE NATIVE CONFIG
-"autoclose and position cursor to write text inside
-inoremap ' ''<left>
-inoremap ` ``<left>
-inoremap " ""<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-"autoclose with ; and position cursor to write text inside
-inoremap '; '';<left><left>
-inoremap `; ``;<left><left>
-inoremap "; "";<left><left>
-inoremap (; ();<left><left>
-inoremap [; [];<left><left>
-inoremap {; {};<left><left>
-"autoclose with , and position cursor to write text inside
-inoremap ', '',<left><left>
-inoremap `, ``,<left><left>
-inoremap ", "",<left><left>
-inoremap (, (),<left><left>
-inoremap [, [],<left><left>
-inoremap {, {},<left><left>
-"autoclose and position cursor after
-inoremap '<tab> ''
-inoremap `<tab> ``
-inoremap "<tab> ""
-inoremap (<tab> ()
-inoremap [<tab> []
-inoremap {<tab> {}
-"autoclose with ; and position cursor after
-inoremap ';<tab> '';
-inoremap `;<tab> ``;
-inoremap ";<tab> "";
-inoremap (;<tab> ();
-inoremap [;<tab> [];
-inoremap {;<tab> {};
-"autoclose with , and position cursor after
-inoremap ',<tab> '',
-inoremap `,<tab> ``,
-inoremap ",<tab> "",
-inoremap (,<tab> (),
-inoremap [,<tab> [],
-inoremap {,<tab> {},
-"autoclose 2 lines below and position cursor in the middle
-inoremap '<CR> '<CR>'<ESC>O
-inoremap `<CR> `<CR>`<ESC>O
-inoremap "<CR> "<CR>"<ESC>O
-inoremap (<CR> (<CR>)<ESC>O
-inoremap [<CR> [<CR>]<ESC>O
-inoremap {<CR> {<CR>}<ESC>O
-"autoclose 2 lines below adding ; and position cursor in the middle
-inoremap ';<CR> '<CR>';<ESC>O
-inoremap `;<CR> `<CR>`;<ESC>O
-inoremap ";<CR> "<CR>";<ESC>O
-inoremap (;<CR> (<CR>);<ESC>O
-inoremap [;<CR> [<CR>];<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
-"autoclose 2 lines below adding , and position cursor in the middle
-inoremap ',<CR> '<CR>',<ESC>O
-inoremap `,<CR> `<CR>`,<ESC>O
-inoremap ",<CR> "<CR>",<ESC>O
-inoremap (,<CR> (<CR>),<ESC>O
-inoremap [,<CR> [<CR>],<ESC>O
-inoremap {,<CR> {<CR>},<ESC>O
-
-
 
 "   ___ _   _   _  ___ ___ _  _
 "  | _ \ | | | | |/ __|_ _| \| |___
@@ -148,10 +82,11 @@ inoremap {,<CR> {<CR>},<ESC>O
  "   Plug 'rust-lang/rust.vim'
 "	Plug 'dense-analysis/ale'
 "call plug#end()
-" Call the .vimrc.plug file
-if filereadable(expand("~/.vim/.vimrc.plug"))
-    source ~/.vimrc.plug
-endif
+try
+    source ~/.vim/.vimrc.plug
+catch
+
+endtry
 " }}}
 
 
@@ -163,12 +98,18 @@ endif
 "  |_|  |_/_/ \_\_| |_| |___|_|\_|\___| 
 
 "  ------------------------------------------------------------------------ {{{
-let mapleader = "//"
+let mapleader = "\\"
 " Press \\ to jump back to the last cursor position.
 nnoremap <leader>\ ``
 
 " Type jj to exit insert mode quickly.
-inoremap jj <Esc>
+"inoremap jj <Esc>
+""if filereadable(expand("~/.vim/.vimrc.mapping"))
+""	source .vimrc.mapping
+""endif
+source ~/.vim/.vimrc.mapping
+
+
 
 
 " }}}
@@ -182,14 +123,8 @@ inoremap jj <Esc>
 
 "  ----------------------------------------------------------------------- {{{
 
-" This will enable code folding.
-" Use the marker method of folding.
-augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-augroup END
+source ~/.vim/.vimrc.script
 
-" More Vimscripts code goes here.
 
 " }}}
 
@@ -203,6 +138,7 @@ augroup END
 " STATUS LINE ------------------------------------------------------------ {{{
 
 " Status bar code goes here.
+source ~/.vim/.vimrc.status_line
 
 " }}}
 
