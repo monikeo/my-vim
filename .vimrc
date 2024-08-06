@@ -35,6 +35,8 @@ set expandtab
 set nobackup
 " Do not let cursor scroll below or above N number of lines when scrolling.
 set scrolloff=10
+" Speed up scrolling in Vim
+set ttyfast
 " Do not wrap lines. Allow long lines to extend as far as the line goes.
 set nowrap
 " While searching though a file incrementally highlight matching characters as you type.
@@ -64,17 +66,20 @@ set wildmode=list:longest
 " Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-
 "   ___ _   _   _  ___ ___ _  _
 "  | _ \ | | | | |/ __|_ _| \| |___
 "  |  _/ |_| |_| | (_ || || .` (_-<
 "  |_| |____\___/ \___|___|_|\_/__/
 
 "  ------------------------------------------------------------------------ {{{
-call plug#begin('~/.vim/plugged')
-    Plug 'rust-lang/rust.vim'
-	Plug 'dense-analysis/ale'
-call plug#end()
+"call plug#begin('~/.vim/plugged')
+ "   Plug 'rust-lang/rust.vim'
+"	Plug 'dense-analysis/ale'
+"call plug#end()
+" Call the .vimrc.plug file
+if filereadable(expand("~/.vim/.vimrc.plug"))
+    source ~/.vimrc.plug
+endif
 " }}}
 
 
@@ -86,7 +91,7 @@ call plug#end()
 "  |_|  |_/_/ \_\_| |_| |___|_|\_|\___| 
 
 "  ------------------------------------------------------------------------ {{{
-let mapleader = "\"
+let mapleader = "//"
 " Press \\ to jump back to the last cursor position.
 nnoremap <leader>\ ``
 

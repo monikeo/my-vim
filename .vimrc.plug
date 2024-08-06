@@ -1,0 +1,6 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'rust-lang/rust.vim'
+Plug 'dense-analysis/ale'
+
+call plug#end()
