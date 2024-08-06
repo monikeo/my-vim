@@ -26,6 +26,11 @@ syntax on
 set number
 set cursorline
 set cursorcolumn
+set signcolumn=yes
+set relativenumber
+set conceallevel=1
+set mouse=a
+set textwidth=79
 
 
 set shiftwidth=4
@@ -65,6 +70,73 @@ set wildmode=list:longest
 " There are certain files that we would never want to edit with Vim.
 " Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+
+"-- AUTOCLOSE NATIVE CONFIG
+"autoclose and position cursor to write text inside
+inoremap ' ''<left>
+inoremap ` ``<left>
+inoremap " ""<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+"autoclose with ; and position cursor to write text inside
+inoremap '; '';<left><left>
+inoremap `; ``;<left><left>
+inoremap "; "";<left><left>
+inoremap (; ();<left><left>
+inoremap [; [];<left><left>
+inoremap {; {};<left><left>
+"autoclose with , and position cursor to write text inside
+inoremap ', '',<left><left>
+inoremap `, ``,<left><left>
+inoremap ", "",<left><left>
+inoremap (, (),<left><left>
+inoremap [, [],<left><left>
+inoremap {, {},<left><left>
+"autoclose and position cursor after
+inoremap '<tab> ''
+inoremap `<tab> ``
+inoremap "<tab> ""
+inoremap (<tab> ()
+inoremap [<tab> []
+inoremap {<tab> {}
+"autoclose with ; and position cursor after
+inoremap ';<tab> '';
+inoremap `;<tab> ``;
+inoremap ";<tab> "";
+inoremap (;<tab> ();
+inoremap [;<tab> [];
+inoremap {;<tab> {};
+"autoclose with , and position cursor after
+inoremap ',<tab> '',
+inoremap `,<tab> ``,
+inoremap ",<tab> "",
+inoremap (,<tab> (),
+inoremap [,<tab> [],
+inoremap {,<tab> {},
+"autoclose 2 lines below and position cursor in the middle
+inoremap '<CR> '<CR>'<ESC>O
+inoremap `<CR> `<CR>`<ESC>O
+inoremap "<CR> "<CR>"<ESC>O
+inoremap (<CR> (<CR>)<ESC>O
+inoremap [<CR> [<CR>]<ESC>O
+inoremap {<CR> {<CR>}<ESC>O
+"autoclose 2 lines below adding ; and position cursor in the middle
+inoremap ';<CR> '<CR>';<ESC>O
+inoremap `;<CR> `<CR>`;<ESC>O
+inoremap ";<CR> "<CR>";<ESC>O
+inoremap (;<CR> (<CR>);<ESC>O
+inoremap [;<CR> [<CR>];<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+"autoclose 2 lines below adding , and position cursor in the middle
+inoremap ',<CR> '<CR>',<ESC>O
+inoremap `,<CR> `<CR>`,<ESC>O
+inoremap ",<CR> "<CR>",<ESC>O
+inoremap (,<CR> (<CR>),<ESC>O
+inoremap [,<CR> [<CR>],<ESC>O
+inoremap {,<CR> {<CR>},<ESC>O
+
+
 
 "   ___ _   _   _  ___ ___ _  _
 "  | _ \ | | | | |/ __|_ _| \| |___
