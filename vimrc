@@ -108,3 +108,4 @@ source ~/.vim/.vimrc.plug
 source ~/.vim/.vimrc.mapping
 source ~/.vim/.vimrc.script
 source ~/.vim/.vimrc.status_line
+source ~/.vim/.vimrc.color
