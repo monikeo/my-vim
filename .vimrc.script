@@ -64,16 +64,30 @@ augroup END
 
 " .rs new file with template
 " but check first, using template only without cargo project
-function! s:LoadRustTemplate()
-    let l:cargo_dir = systemlist('git rev-parse --show-toplevel 2>/dev/null')[0]
-    if v:shell_error
-        " Not inside a Git repository, check for Cargo.toml
-        let l:cargo_dir = finddir('Cargo.toml', '.;')
-    endif
+function! s:is_in_cargo_project()
+    let l:dir = expand('%:p:h')
+    while l:dir != '/'
+        if filereadable(l:dir . '/Cargo.toml')
+            return 1
+        endif
+        let l:dir = fnamemodify(l:dir, ':h')
+    endwhile
+    return 0
+endfunction
 
-    if empty(l:cargo_dir)
-        " Not inside a Cargo project, load the template
-        0read ~/.vim/templates/rust.template
+function! s:load_rust_template()
+    " Read the template file
+    let l:template_file = expand('~/.vim/templates/rust.template')
+    if filereadable(l:template_file)
+        execute '0r ' . l:template_file
+    else
+        echo "Template file not found: " . l:template_file
+    endif
+endfunction
+
+function! s:handle_new_rust_file()
+    if !s:is_in_cargo_project()
+        call s:load_rust_template()
     endif
 endfunction
 
@@ -81,7 +95,7 @@ endfunction
 " call function LoadRustTemplate()
 augroup NewRustFile
     autocmd!
-    autocmd BufNewFile *.rs call s:LoadRustTemplate()
+    autocmd BufNewFile *.rs call s:handle_new_rust_file()
 augroup END
 
 
