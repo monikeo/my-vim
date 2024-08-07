@@ -49,6 +49,7 @@ set signcolumn=yes
 set relativenumber
 set conceallevel=1
 set textwidth=79
+set clipboard=unnamed
 
 """" Tab settings
 " width that a <TAB> character displays as
