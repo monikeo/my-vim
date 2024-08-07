@@ -13,9 +13,7 @@
 " Author: Moni Keo
 " Github: @monikeo281000
 
-
 set nocompatible
-set encoding=utf-8
 
 filetype on
 filetype plugin on
@@ -23,29 +21,61 @@ filetype indent on
 
 syntax on
 
-set number
+"""" Basic Behavior
+" show line numbers
+    set number
+" wrap lines
+    set wrap
+" set encoding to UTF-8 (default was "latin1")
+    set encoding=utf-8
+" enable mouse support (might not work well on Mac OS X)
+    set mouse=a
+" visual autocomplete for command menu
+    set wildmenu
+    set wildmode=full
+" redraw screen only when we need to
+    set lazyredraw
+" highlight matching parentheses / brackets [{()}]
+    set showmatch
+" show line and column number of the cursor on right side of statusline
+    set ruler
+" blink cursor on error, instead of beeping
+    set visualbell
+
+
 set cursorline
 set cursorcolumn
 set signcolumn=yes
 set relativenumber
 set conceallevel=1
-set mouse=a
 set textwidth=79
 
+"""" Tab settings
+" width that a <TAB> character displays as
+    set tabstop=4
+" convert <TAB> key-presses to spaces
+    set expandtab
+" number of spaces to use for each step of (auto)indent
+    set shiftwidth=4
+" copy indent from current line when starting a new line
+    set autoindent
+" even better autoindent (e.g. add indent after '{')
+    set smartindent
+""""
 
-set shiftwidth=4
-set tabstop=4
-" Use space characters instead of tabs.
-set expandtab
+
+"""" Search settings
+" search as characters are entered
+    set incsearch
+" highlight matches
+    set hlsearch
+""""
+
 set nobackup
 " Do not let cursor scroll below or above N number of lines when scrolling.
 set scrolloff=10
 " Speed up scrolling in Vim
 set ttyfast
-" Do not wrap lines. Allow long lines to extend as far as the line goes.
-set nowrap
-" While searching though a file incrementally highlight matching characters as you type.
-set incsearch
 " Ignore capital letters during search.
 set ignorecase
 " Override the ignorecase option if searching for capital letters.
@@ -57,13 +87,9 @@ set showcmd
 set showmode
 " Show matching words during a search.
 set showmatch
-" Use highlighting when doing a search.
-set hlsearch
 " Set the commands to save in history default number is 20.
 set history=1000
 
-" Enable auto completion menu after pressing TAB.
-set wildmenu
 " Make wildmenu behave like similar to Bash completion.
 set wildmode=list:longest
 
@@ -71,79 +97,12 @@ set wildmode=list:longest
 " Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-
-"   ___ _   _   _  ___ ___ _  _
-"  | _ \ | | | | |/ __|_ _| \| |___
-"  |  _/ |_| |_| | (_ || || .` (_-<
-"  |_| |____\___/ \___|___|_|\_/__/
-
-"  ------------------------------------------------------------------------ {{{
-"call plug#begin('~/.vim/plugged')
- "   Plug 'rust-lang/rust.vim'
-"	Plug 'dense-analysis/ale'
-"call plug#end()
-try
-    source ~/.vim/.vimrc.plug
-catch
-
-endtry
-" }}}
+" autoreload the file in Vim if it has been changed outside of Vim
+set autoread
 
 
-
-
-"   __  __   _   ___ ___ ___ _  _  ___
-"  |  \/  | /_\ | _ \ _ \_ _| \| |/ __|
-"  | |\/| |/ _ \|  _/  _/| || .` | (_ |
-"  |_|  |_/_/ \_\_| |_| |___|_|\_|\___| 
-
-"  ------------------------------------------------------------------------ {{{
-let mapleader = "\\"
-" Press \\ to jump back to the last cursor position.
-nnoremap <leader>\ ``
-
-" Type jj to exit insert mode quickly.
-"inoremap jj <Esc>
-""if filereadable(expand("~/.vim/.vimrc.mapping"))
-""	source .vimrc.mapping
-""endif
+""""" SOURCE """""
+source ~/.vim/.vimrc.plug
 source ~/.vim/.vimrc.mapping
-
-
-
-
-" }}}
-
-
-
-"  __   _____ __  __ ___  ___ ___ ___ ___ _____
-"  \ \ / /_ _|  \/  / __|/ __| _ \_ _| _ \_   _|
-"   \ V / | || |\/| \__ \ (__|   /| ||  _/ | |
-"    \_/ |___|_|  |_|___/\___|_|_\___|_|   |_|
-
-"  ----------------------------------------------------------------------- {{{
-
 source ~/.vim/.vimrc.script
-
-
-" }}}
-
-
-
-"   ___ _____ _ _____ _   _ ___   _    ___ _  _ ___
-"  / __|_   _/_\_   _| | | / __| | |  |_ _| \| | __|
-"  \__ \ | |/ _ \| | | |_| \__ \ | |__ | || .` | _|
-"  |___/ |_/_/ \_\_|  \___/|___/ |____|___|_|\_|___|
-
-" STATUS LINE ------------------------------------------------------------ {{{
-
-" Status bar code goes here.
 source ~/.vim/.vimrc.status_line
-
-" }}}
-
-
-                                       
-                                       
-
-
