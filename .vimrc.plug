@@ -1,26 +1,19 @@
 call plug#begin('~/.vim/plugged')
-
 Plug 'rust-lang/rust.vim'
 Plug 'dense-analysis/ale'
 Plug 'preservim/NERDTree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-surround'
+Plug 'ayu-theme/ayu-vim'
 call plug#end()
+
+set termguicolors     " enable true colors support
+let ayucolor="dark" " for mirage version of theme
+colorscheme ayu
 
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
@@ -35,7 +28,7 @@ nmap <silent> gr <Plug>(coc-references)
 
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
-nnoremap <F3> :NERDTreeToggle<cr>
+nnoremap <F3> :NERDTreeToggle<Cr>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 

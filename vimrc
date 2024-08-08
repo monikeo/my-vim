@@ -13,6 +13,14 @@
 
 " Author: Moni Keo
 " Github: @monikeo281000
+"
+
+""""" SOURCE """""
+source ~/.vim/.vimrc.plug
+source ~/.vim/.vimrc.mapping
+source ~/.vim/.vimrc.script
+source ~/.vim/.vimrc.status_line
+""source ~/.vim/.vimrc.color
 
 set nocompatible
 
@@ -101,11 +109,3 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " autoreload the file in Vim if it has been changed outside of Vim
 set autoread
-
-
-""""" SOURCE """""
-source ~/.vim/.vimrc.plug
-source ~/.vim/.vimrc.mapping
-source ~/.vim/.vimrc.script
-source ~/.vim/.vimrc.status_line
-source ~/.vim/.vimrc.color
