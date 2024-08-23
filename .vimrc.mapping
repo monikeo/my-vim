@@ -2,7 +2,6 @@
 " Type jj to exit insert mode quickly.
 inoremap jj <Esc>
 
-
 "-- AUTOCLOSE NATIVE CONFIG
 " autoclose and position cursor to write text inside
 inoremap ' ''<left>
@@ -83,7 +82,6 @@ noremap <c-up> <c-w>+
 noremap <c-down> <c-w>-
 noremap <c-left> <c-w>>
 noremap <c-right> <c-w><
-
 
 " Map the F5 key to run a Python script inside Vim.
 " I map F5 to a chain of commands here.
