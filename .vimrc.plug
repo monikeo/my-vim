@@ -6,6 +6,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-surround'
 Plug 'ayu-theme/ayu-vim'
 Plug 'cespare/vim-toml', { 'branch': 'main' }
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+Plug 'jparise/vim-graphql'        " GraphQL syntax
 call plug#end()
 
 set termguicolors     " enable true colors support
